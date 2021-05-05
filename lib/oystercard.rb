@@ -8,14 +8,14 @@ class Oystercard
     @balance = 0
   end
 
-  def add_money(top_up)
+  def top_up(money)
     raise 'Balance cannot exceed £100!' if bal_limit(top_up)
 
-    @balance += top_up
+    @balance += money
   end
 
-  def bal_limit(top_up)
-    value = @balance + top_up > BALANCE_LIMIT
+  def bal_limit(money)
+    value = @balance + money > BALANCE_LIMIT
   end
 
   def ticket(fare)

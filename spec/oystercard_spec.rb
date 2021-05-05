@@ -7,7 +7,7 @@ describe Oystercard do
     it { is_expected.to respond_to :balance }
 
     it 'can add money to balance' do
-      subject.add_money(10)
+      subject.top_up(10)
       expect(subject.balance).to eq(10)
     end
 
@@ -16,11 +16,11 @@ describe Oystercard do
     end
 
     it 'limits balance amount' do
-      expect { subject.add_money(101) }.to raise_error 'Balance cannot exceed £100!'
+      expect { subject.top_up(101) }.to raise_error 'Balance cannot exceed £100!'
     end
 
     it 'fare can be deducted' do
-      subject.add_money(100)
+      subject.top_up(100)
       expect(subject.ticket(4)).to eq 96
     end
   end
